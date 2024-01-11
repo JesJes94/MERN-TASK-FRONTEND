@@ -8,6 +8,7 @@ const AuthProvider = ({children}) => {
 
     const [autenticado, setAutenticado] = useState({});
     const [cargando, setCargando] = useState(true);
+    const [submit, setSubmit] = useState(false);
 
     const path = localStorage.getItem('lastpath') || '/proyectos'
     const navigate = useNavigate();
@@ -41,7 +42,7 @@ const AuthProvider = ({children}) => {
 
         autenticarUsuario();
    
-    }, [])
+    }, [submit])
 
     const cerrarSesionAuth = () => {
         setAutenticado({})
@@ -52,6 +53,7 @@ const AuthProvider = ({children}) => {
             value={{
                 autenticado,
                 setAutenticado,
+                setSubmit,
                 cargando,
                 cerrarSesionAuth
             }}
